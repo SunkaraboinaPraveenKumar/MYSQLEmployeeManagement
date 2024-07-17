@@ -7,6 +7,45 @@ import bcrypt from 'bcrypt';
 
 const router = express.Router();
 
+
+
+// Route to get admin profile
+router.get('/profile', (req, res) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({ Status: false, Error: "Unauthorized" });
+    }
+
+    const decoded = jwt.verify(token, "~!#$%^&*()_+");
+    const sql = "SELECT id, email FROM admin WHERE id = ?";
+    con.query(sql, [decoded.id], (err, result) => {
+        if (err) return res.json({ Status: false, Error: "Query error" });
+        if (result.length === 0) return res.status(404).json({ Status: false, Error: "Admin not found" });
+        return res.json({ Status: true, Result: result[0] });
+    });
+});
+
+// Route to update admin profile
+router.put('/profile', (req, res) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({ Status: false, Error: "Unauthorized" });
+    }
+
+    const decoded = jwt.verify(token, "~!#$%^&*()_+");
+    const { email, password } = req.body;
+    const sql = "UPDATE admin SET email = ?, password = ? WHERE id = ?";
+
+    bcrypt.hash(password, 5, (err, hash) => {
+        if (err) return res.json({ Status: false, Error: "Password hashing error" });
+
+        con.query(sql, [email, hash, decoded.id], (err, result) => {
+            if (err) return res.json({ Status: false, Error: "Query error" });
+            return res.json({ Status: true, Result: result });
+        });
+    });
+});
+
 router.post('/adminlogin', (req, res) => {
     const sql = "SELECT * FROM admin WHERE email=? AND password=?";
     con.query(sql, [req.body.email, req.body.password], (err, result) => {

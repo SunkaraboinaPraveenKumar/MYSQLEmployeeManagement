@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const EmployeeDetail = () => {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const { id } = useParams();
     const [employee, setEmployee] = useState(null); // Use null as the initial state
 
@@ -46,7 +47,7 @@ const EmployeeDetail = () => {
                     <h3>Salary: ${employee.salary}</h3>
                 </div>
                 <div>
-                    <button className='btn btn-primary me-2'>Edit</button>
+                    <Link to={`/dashboard/edit_employee/` + employee.id} className='btn btn-info me-2'>Edit</Link>
                     <button className='btn btn-danger' onClick={handleLogout}>Logout</button>
                 </div>
             </div>
