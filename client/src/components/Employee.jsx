@@ -8,7 +8,7 @@ const Employee = () => {
   const [employee, setEmployee] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/auth/employee')
+    axios.get('https://mysqlemployeemanagement.onrender.com/auth/employee')
       .then(result => {
         if (result.data.Status) {
           setEmployee(result.data.Result);
@@ -20,7 +20,7 @@ const Employee = () => {
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete('http://localhost:3000/auth/delete_employee/' + id)
+    axios.delete('https://mysqlemployeemanagement.onrender.com/auth/delete_employee/' + id)
       .then(result => {
         if (result.data.Status) {
           window.location.reload();
@@ -57,7 +57,7 @@ const Employee = () => {
                 return (
                   <tr key={e.id}>
                     <td>{e.name}</td>
-                    <td><img src={`http://localhost:3000/images/` + imageFileName} alt="" className='employee_img' style={{width:'40px',height:'40px',borderRadius:'50%'}}/></td>
+                    <td><img src={`https://mysqlemployeemanagement.onrender.com/images/` + imageFileName} alt="" className='employee_img' style={{width:'40px',height:'40px',borderRadius:'50%'}}/></td>
                     <td>{e.email}</td>
                     <td>{e.address}</td>
                     <td>{e.salary}</td>

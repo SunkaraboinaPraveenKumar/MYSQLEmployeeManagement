@@ -17,7 +17,7 @@ const AddEmployee = () => {
 
     // Fetch categories from backend on component mount
     useEffect(() => {
-        axios.get('http://localhost:3000/auth/category')
+        axios.get('https://mysqlemployeemanagement.onrender.com/auth/category')
             .then(result => {
                 if (result.data.Status) {
                     setCategory(result.data.Result);
@@ -40,7 +40,7 @@ const AddEmployee = () => {
         formData.append('category_id', employee.category_id);
         formData.append('image', employee.image);
 
-        axios.post('http://localhost:3000/auth/add_employee', formData)
+        axios.post('https://mysqlemployeemanagement.onrender.com/auth/add_employee', formData)
             .then(result => {
                 if(result.data.Status){
                     navigate('/dashboard/employee')

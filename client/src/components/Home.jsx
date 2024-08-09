@@ -12,7 +12,7 @@ const Home = () => {
     adminRecords()
   }, [])
   const adminCount = () => {
-    axios.get('http://localhost:3000/auth/admin_count')
+    axios.get('https://mysqlemployeemanagement.onrender.com/auth/admin_count')
       .then(result => {
         if (result.data.Status) {
           setAdminTotal(result.data.Result[0].admin);
@@ -21,7 +21,7 @@ const Home = () => {
       .catch(err => console.log(err));
   }
   const employeeCount = () => {
-    axios.get('http://localhost:3000/auth/employee_count')
+    axios.get('https://mysqlemployeemanagement.onrender.com/auth/employee_count')
       .then(result => {
         if (result.data.Status) {
           setEmployeeTotal(result.data.Result[0].employee);
@@ -30,7 +30,7 @@ const Home = () => {
       .catch(err => console.log(err));
   }
   const salaryCount = () => {
-    axios.get('http://localhost:3000/auth/salary_count')
+    axios.get('https://mysqlemployeemanagement.onrender.com/auth/salary_count')
       .then(result => {
         if (result.data.Status) {
           setSalaryTotal(result.data.Result[0].salary);
@@ -40,7 +40,7 @@ const Home = () => {
   }
 
   const adminRecords=()=>{
-    axios.get('http://localhost:3000/auth/admin_records')
+    axios.get('https://mysqlemployeemanagement.onrender.com/auth/admin_records')
     .then(result => {
       if (result.data.Status) {
         setAdmins(result.data.Result);

@@ -9,7 +9,7 @@ const DashBoard = () => {
   const navigate=useNavigate();
   axios.defaults.withCredentials=true;
   const handleLogout=()=>{
-    axios.get('http://localhost:3000/auth/logout')
+    axios.get('https://mysqlemployeemanagement.onrender.com/auth/logout')
     .then(result=>{
       if(result.data.Status){
         localStorage.removeItem("valid");

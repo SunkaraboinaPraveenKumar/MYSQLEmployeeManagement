@@ -12,7 +12,7 @@ const EmployeeLogin = () => {
     const [error,setError]=useState(null);
     const handleSubmit=(event)=>{
         event.preventDefault();
-        axios.post('http://localhost:3000/employee/employee_login',values)
+        axios.post('https://mysqlemployeemanagement.onrender.com/employee/employee_login',values)
         .then(result=>{
             if(result.data.loginStatus){
                 localStorage.setItem("valid",true);

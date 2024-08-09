@@ -7,7 +7,7 @@ const AddCategory = () => {
     const [category,setCategory]=useState();
     const handleSubmit=(e)=>{
         e.preventDefault()
-        axios.post('http://localhost:3000/auth/add_category',{category})
+        axios.post('https://mysqlemployeemanagement.onrender.com/auth/add_category',{category})
         .then(result=>{
             if(result.data.Status){
                 navigate("/dashboard/category");
