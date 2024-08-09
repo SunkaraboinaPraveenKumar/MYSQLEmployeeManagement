@@ -10,7 +10,7 @@ const EmployeeDetail = () => {
     const [employee, setEmployee] = useState(null); // Use null as the initial state
 
     useEffect(() => {
-        axios.get('https://mysqlemployeemanagement.onrender.com/employee/detail/' + id)
+        axios.get('http://localhost:3000/employee/detail/' + id)
             .then(result => {
                 console.log(result.data);
                 setEmployee(result.data[0]);
@@ -25,7 +25,7 @@ const EmployeeDetail = () => {
     const imagePathParts = employee.image.split("\\");
     const imageFileName = imagePathParts[2] ? imagePathParts[2] : ''; // Get the third part
     const handleLogout = () => {
-        axios.get('https://mysqlemployeemanagement.onrender.com/employee/logout')
+        axios.get('http://localhost:3000/employee/logout')
             .then(result => {
                 if (result.data.Status) {
                     localStorage.removeItem("valid");
@@ -40,7 +40,7 @@ const EmployeeDetail = () => {
                 <h4>Employee Management System</h4>
             </div>
             <div className='d-flex justify-content-center flex-column align-items-center mt-3'>
-                <img src={`https://mysqlemployeemanagement.onrender.com/images/` + imageFileName} alt="" className='employee_det_image' style={{ height: '250px', width: '250px', borderRadius: '50%' }} />
+                <img src={`http://localhost:3000/images/` + imageFileName} alt="" className='employee_det_image' style={{ height: '250px', width: '250px', borderRadius: '50%' }} />
                 <div className='d-flex align-items-center flex-column mt-5'>
                     <h3>Name: {employee.name}</h3>
                     <h3>Email: {employee.email}</h3>

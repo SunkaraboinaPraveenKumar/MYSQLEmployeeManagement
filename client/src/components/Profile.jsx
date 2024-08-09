@@ -8,7 +8,7 @@ const AdminProfile = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('https://mysqlemployeemanagement.onrender.com/auth/profile', { withCredentials: true })
+    axios.get('http://localhost:3000/auth/profile', { withCredentials: true })
       .then(response => {
         if (response.data.Status) {
           setAdmin({ ...admin, email: response.data.Result.email });
@@ -31,7 +31,7 @@ const AdminProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put('https://mysqlemployeemanagement.onrender.com/auth/profile', admin, { withCredentials: true })
+    axios.put('http://localhost:3000/auth/profile', admin, { withCredentials: true })
       .then(response => {
         if (response.data.Status) {
           alert('Profile updated successfully');

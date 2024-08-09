@@ -8,7 +8,7 @@ const Start = () => {
     useEffect(() => {
         const verifyUser = async () => {
             try {
-                const result = await axios.get('https://mysqlemployeemanagement.onrender.com/verify', { withCredentials: true });
+                const result = await axios.get('http://localhost:3000/verify', { withCredentials: true });
                 if (result.data.Status) {
                     if (result.data.role === "admin") {
                         navigate("/dashboard");

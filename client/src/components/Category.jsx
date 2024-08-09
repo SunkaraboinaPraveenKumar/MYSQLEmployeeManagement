@@ -5,7 +5,7 @@ import axios from 'axios';
 const Category = () => {
   const [category,setCategory]=useState([]);
   useEffect(() => {
-      axios.get('https://mysqlemployeemanagement.onrender.com/auth/category')
+      axios.get('http://localhost:3000/auth/category')
       .then(result=>{
         if(result.data.Status){
           setCategory(result.data.Result);

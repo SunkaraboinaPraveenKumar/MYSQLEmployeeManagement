@@ -18,7 +18,7 @@ const EditEmployee = () => {
     });
     const [category, setCategory] = useState([]);
     useEffect(() => {
-        axios.get('https://mysqlemployeemanagement.onrender.com/auth/category')
+        axios.get('http://localhost:3000/auth/category')
             .then(result => {
                 if (result.data.Status) {
                     setCategory(result.data.Result);
@@ -29,7 +29,7 @@ const EditEmployee = () => {
             })
             .catch(err => console.log(err));
 
-        axios.get('https://mysqlemployeemanagement.onrender.com/auth/employee/'+id)
+        axios.get('http://localhost:3000/auth/employee/'+id)
             .then(result => {
                 if (result.data.Status) {
                     setEmployee({
@@ -51,7 +51,7 @@ const EditEmployee = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        axios.put('https://mysqlemployeemanagement.onrender.com/auth/edit_employee/'+id, employee)
+        axios.put('http://localhost:3000/auth/edit_employee/'+id, employee)
         .then(result=>{
             if(result.data.Status){
                 navigate("/dashboard/employee");
