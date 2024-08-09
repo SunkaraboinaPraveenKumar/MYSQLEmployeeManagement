@@ -1,5 +1,5 @@
 import express from 'express';
-import con from '../utils/db.js';
+import con from '../db.js';
 import jwt from 'jsonwebtoken';
 import path from 'path';
 import multer from 'multer';

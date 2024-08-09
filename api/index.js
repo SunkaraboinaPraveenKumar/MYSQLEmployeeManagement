@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename); // Get directory name from filename
 const app = express();
 
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173","https://mysql-employee-management.vercel.app"],
     methods: ['GET', 'POST', 'PUT','DELETE'],
     credentials: true
 }));
